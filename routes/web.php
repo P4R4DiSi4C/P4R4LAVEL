@@ -15,4 +15,6 @@ use App\Http\Controllers\RestaurantController;
 */
 
 Route::get('/', [RestaurantController::class, 'index'])->name('accueil');
+Route::get('/restaurant/create', [RestaurantController::class, 'create'])->name('restaurant.create');
+Route::post('/restaurant/create', [RestaurantController::class, 'store'])->name('restaurant.store');
 Route::get('/restaurant/{id}', [RestaurantController::class, 'show'])->whereNumber('id')->name('restaurant.show');

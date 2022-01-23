@@ -1,4 +1,4 @@
 <ul>
 	<li><a href="{{route('accueil')}}">Accueil</a></li>
-	<li><a href="/restaurant/1">1</a></li>
+	<li><a href="{{route('restaurant.create')}}">Create</a></li>
 </ul>

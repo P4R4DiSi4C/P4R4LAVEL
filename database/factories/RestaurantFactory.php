@@ -17,6 +17,7 @@ class RestaurantFactory extends Factory
             //
             "name" => $this->faker->company(),
             "desc" => $this->faker->sentence(),
+            "user_id" => 1,
             "created_at" => now()
         ];
     }

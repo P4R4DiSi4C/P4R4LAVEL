@@ -9,14 +9,39 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::orderBy('name')->get();
 
-        return view('restaurants', ['restaurants' => $restaurants]);
+        return view(
+            'restaurants',
+            ['restaurants' => $restaurants]
+        );
     }
 
     public function show($id)
     {
-        $restaurant = Restaurant::find($id);
-        return view('restaurant', ['restaurant' => $restaurant]);
+        $restaurant = Restaurant::findOrFail($id);
+        return view(
+            'restaurant',
+            ['restaurant' => $restaurant]
+        );
+    }
+
+    public function create()
+    {
+        return view('form');
+    }
+
+    public function store(Request $request)
+    {
+        /*$restaurant = new Restaurant();
+        $restaurant->name = $request->name;
+        $restaurant->desc = $request->desc;
+        $restaurant->save();*/
+        Restaurant::create([
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'user_id' => 1
+        ]);
+        return view('form');
     }
 }
